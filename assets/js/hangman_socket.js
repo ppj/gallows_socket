@@ -8,7 +8,15 @@ export default class HangmanSocket {
 
   connect_to_hangman() {
     this.channel = this.socket.channel("hangman:game", {})
-    this.channel.join()
+    this.channel.
+      join().
+      receive("ok", resp => {
+        console.log("Connected: " + resp)
+      }).
+      receive("error", resp => {
+        alert(resp)
+        throw(resp)
+      })
   }
 }
 
