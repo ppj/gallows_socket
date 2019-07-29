@@ -15,4 +15,9 @@ defmodule GallowsSocketWeb.HangmanChannel do
     push(socket, "tally", tally)
     {:noreply, socket}
   end
+
+  def handle_in(message, _, socket) do
+    Logger.error("Invalid message received: #{message}")
+    {:noreply, socket}
+  end
 end
