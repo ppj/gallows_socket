@@ -11,13 +11,8 @@ defmodule GallowsSocketWeb.HangmanChannel do
   def handle_in("tally", _, socket) do
     tally = socket.assigns.game
             |> Hangman.tally()
-            |> cleaned_up_tally() # :used is a MapSet that needs to be converted to a list
+            |> Map.update!(:used, &MapSet.to_list/1) # convert :used MapSet to list
     push(socket, "tally", tally)
     {:noreply, socket}
-  end
-
-  defp cleaned_up_tally(tally) do
-    tally = tally
-            |> Map.put(:used, MapSet.to_list(tally.used))
   end
 end
