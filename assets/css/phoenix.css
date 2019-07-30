@@ -29,10 +29,17 @@ select {
 
 /* Alerts and form errors */
 .alert {
+  text-align: center;
+  font-size:  150%;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+}
+.alert-success {
+  color: #2a4f34;
+  background-color: #defede;
+  border-color: #a5ddb4;
 }
 .alert-info {
   color: #31708f;
